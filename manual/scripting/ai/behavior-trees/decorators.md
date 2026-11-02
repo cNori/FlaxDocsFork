@@ -1,5 +1,7 @@
 # Behavior Tree Decorators
 
+![Behavior Tree Decorators](media/decorators.png)
+
 Behavior Trees are very extensible meaning you can create own decorator types in your game project or use the ones from engine and plugins. Each decorator can define custom logic, contain properties and store runtime state (per-instance). This page contains a list of all in-built decorator types with their documentation.
 
 ## Invert
@@ -49,9 +51,9 @@ Checks certain knowledge value to conditionally enter the node.
 
 | Property | Description |
 |--------|--------|
-| **Value A** | The first value from behavior's knowledge (blackboard, goal or sensor) to use for comparision. |
-| **Value B** | The second value to use for comparision (constant). |
-| **Comparison** | Values comparision mode (equal, not equal, less, greater, etc.). |
+| **Value A** | The first value from behavior's knowledge (blackboard, goal or sensor) to use for comparison. |
+| **Value B** | The second value to use for comparison (constant). |
+| **Comparison** | Values comparison mode (equal, not equal, less, greater, etc.). |
 
 ## Knowledge Values Conditional
 
@@ -59,9 +61,9 @@ Checks certain knowledge value to conditionally enter the node.
 
 | Property | Description |
 |--------|--------|
-| **Value A** | The first value from behavior's knowledge (blackboard, goal or sensor) to use for comparision. |
-| **Value B** | The second value from behavior's knowledge (blackboard, goal or sensor) to use for comparisio. |
-| **Comparison** | Values comparision mode (equal, not equal, less, greater, etc.). |
+| **Value A** | The first value from behavior's knowledge (blackboard, goal or sensor) to use for comparison. |
+| **Value B** | The second value from behavior's knowledge (blackboard, goal or sensor) to use for comparison. |
+| **Comparison** | Values comparison mode (equal, not equal, less, greater, etc.). |
 
 ## Has Tag
 

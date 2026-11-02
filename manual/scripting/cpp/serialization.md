@@ -18,6 +18,50 @@ private:
     API_FIELD(Attributes="Serialize") float PrivateVarSaved;
 ```
 
+## Serialization callbacks
+
+Flax supports serialization callback methods. A callback can be used to manipulate an object before and/or after its serialization and deserialization by the serializer.
+
+* `OnSerializing`
+* `OnSerialized`
+* `OnDeserializing`
+* `OnDeserialized`
+
+Example:
+
+```cpp
+#include "Engine/Serialization/ISerializeModifier.h"
+
+API_CLASS() class GAME_API MyScript : public Script
+{
+    API_AUTO_SERIALIZATION();
+    DECLARE_SCENE_OBJECT(MyScript);
+
+public:
+    API_FUNCTION(Attributes="OnSerializing", Hidden)
+    void OnSerializing(const CallbackContext& context)
+    {
+    }
+
+    API_FUNCTION(Attributes="OnSerialized", Hidden)
+    void OnSerialized(const CallbackContext& context)
+    {
+    }
+
+    API_FUNCTION(Attributes="OnDeserializing", Hidden)
+    void OnDeserializing(const CallbackContext& context)
+    {
+        // 'context.Modifier->EngineBuild' holds engine version of saved data
+    }
+
+    API_FUNCTION(Attributes="OnDeserialized", Hidden)
+    void OnDeserialized(const CallbackContext& context)
+    {
+        // 'context.Modifier->EngineBuild' holds engine version of saved data
+    }
+};
+```
+
 ## Json
 
 Flax uses [RapidJSON](https://rapidjson.org) library to serialize data into *json* format.

@@ -11,11 +11,11 @@ Example game settings file can be found [here](https://github.com/FlaxEngine/Fla
 
 ## Creating settings
 
-![New Settings](../../physics/media/new-settings.jpg)
+![New Settings](../../physics/media/new-settings.png)
 
 You can use the *Content* window to create new settings. Simply right-click in the Content folder and select option **New -> Settings**, specify its name and press *Enter*. Then select the new asset type. Game settings asset or any other settings asset is normal Json resource so you can rename/move/edit them like other asset types. It's highly recommended to use a [version control](../../get-started/version-control.md) system for settings as they are text files and should be versioned when working in a team.
 
-![New Settings](../../physics/media/physics-settings-new.jpg)
+![New Settings](../../physics/media/physics-settings-new.png)
 
 ## Properties
 
@@ -49,6 +49,7 @@ You can use the *Content* window to create new settings. Simply right-click in t
 | **Switch** | Reference to [Switch Settings](../../platforms/switch.md) settings. Contains options used when building game for Switch. |
 | **macOS** | Reference to [macOS](../../platforms/mac.md) asset. Contains options used when building game for macOS. |
 | **iOS** | Reference to [iOS](../../platforms/ios.md) asset. Contains options used when building game for iOS. |
+| **Web** | Reference to [Web](../../platforms/web.md) asset. Contains options used when building game for Web. |
 
 ## Accessing settings at runtime
 

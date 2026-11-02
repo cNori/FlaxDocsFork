@@ -10,6 +10,7 @@ Flax Engine is very extensible which allows developers to create custom solution
 * [Arizona Framework](https://github.com/FlaxEngine/ArizonaFramework) - open-source framework for creating games in Flax
 * [Arizona Framework Sample](https://github.com/FlaxEngine/ArizonaFrameworkSample) - open-source sample multiplayer game using Arizona Framework
 * [NVIDIA DLSS](https://github.com/FlaxEngine/DLSS) - NVIDIA DLSS for Flax Engine
+* [NVIDIA PerfSDK](https://github.com/FlaxEngine/PerfSDK) - NVIDIA PerfSDK plugin for Flax Engine
 * [FidelityFX FSR](https://github.com/FlaxEngine/FidelityFX-FSR) - AMD FidelityFX Super Resolution for Flax Engine
 * [Online Platform Steam](https://github.com/FlaxEngine/OnlinePlatformSteam) - Steam for Flax Engine
 * [Online Platform Xbox Live](https://github.com/FlaxEngine/OnlinePlatformXboxLive) - Xbox Live for Flax Engine
@@ -17,6 +18,9 @@ Flax Engine is very extensible which allows developers to create custom solution
 * [Flax Samples](https://github.com/FlaxEngine/FlaxSamples) - Collection of example projects for Flax Engine
 * [Example Plugin](https://github.com/FlaxEngine/ExamplePlugin) - Example Plugin for Flax
 * [Dear ImGui](https://github.com/FlaxEngine/ImGui) - Dear ImGui for Flax Engine
+* [Flax Web Racing](https://github.com/FlaxEngine/FlaxWebRacing) - Arcade racing game in Flax Engine
+* [Split Screen Sample](https://github.com/FlaxEngine/SplitScreenSample) - Simple local co-op racing game project with split-screen
+* [Online Platform Sample](https://github.com/FlaxEngine/OnlinePlatformSample) - Sample project with Online Platform usage
 
 ## Community Projects
 
@@ -40,3 +44,6 @@ Flax Engine is very extensible which allows developers to create custom solution
 * [FlaxCustomAttributes](https://github.com/FlaxCommunityProjects/FlaxCustomAttributes) - Custom C# attributes usage utility for Editor
 * [HeroCrab Plugin](https://github.com/herocrab/HeroCrabPlugin) - Authoritative network messaging framework for use in multi-player games
 * [RmlUi](https://github.com/GoaLitiuM/RmlUi) - HTML/CSS user interface library `RmlUi` wrapper ([samples](https://github.com/GoaLitiuM/FlaxRmlUiSamples))
+* [Flax FMOD](https://github.com/Tryibion/FlaxFmod) - FMOD audio library integration
+* [Flax Simple Save System](https://github.com/Tryibion/FlaxSimpleSaveSystem) - save system that includes save slots, encryption, hashing, and data caching.
+* [Audio Reactor](https://github.com/holdulv-2nd/AudioReactor) - real-time audio visualization using NAudio to sync game world (lights, cameras, UI, objects) to the beat.

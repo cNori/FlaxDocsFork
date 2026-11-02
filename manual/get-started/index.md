@@ -2,9 +2,9 @@
 
 ![Flax Engine Logo](media/flax-title.jpg)
 
-Welcome to the Official Flax Engine Manual! In this section you will find everything you need to start creating games with Flax from scratch. Let's get started!
+Welcome to the Official Flax Engine Manual! Whether you are migrating from another Game Engine or writing your first line of code, this comprehensive guide is designed to take you from installation to your first functional scene. Let's get started!
 
-## The first steps
+## Your first steps in Flax
 
 <div class="frontpage">
 
@@ -28,14 +28,14 @@ Welcome to the Official Flax Engine Manual! In this section you will find everyt
 
 </div>
 
-## Migrate to Flax
+## Migrating to Flax
 
 <div class="frontpage">
 
 <div class="frontpage-section">
 <a href="flax-for-ue4-devs/index.md"><img src="flax-for-ue4-devs/media/icon.jpg"></a>
-<h3><a href="flax-for-ue4-devs/index.md">Flax for UE4® devs</a></h3>
-<p>Migrating from UE4 to Flax.</p>
+<h3><a href="flax-for-ue4-devs/index.md">Flax for Unreal® devs</a></h3>
+<p>Migrating from UE5 to Flax.</p>
 </div>
 
 <div class="frontpage-section">

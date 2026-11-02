@@ -59,6 +59,9 @@ See *Android Platform Settings* asset.
 
 ## C\+\+ Debugging
 
+> [!Warning]
+> Visual Studio 2026 has deprecated native code debugging.
+
 * Install `C++ Android development tools` via Visual Studio Installer
 * Build game for android to `.apk` and install it on the device
 * Regenerate scripts projects files
@@ -86,7 +89,7 @@ Use `.\adb.exe -d logcat Flax:I *:S` to listen for game logs on device.
 ## Vulkan debugging
 
 * Build Debug build
-* Copy `libVkLayer_khronos_validation.so` (optionally other validation libs) from `NDK/sources/third_party/vulkan/src/build-android/jniLibs/arm64-v8a` to output Gradle project libs folder (`<output>/app/jniLibs/arm64-v8a`)
+* Copy `libVkLayer_khronos_validation.so` (optionally other validation libs) from `NDK/sources/third_party/vulkan/src/build-android/jniLibs/arm64-v8a` or from [official website](https://developer.android.com/ndk/guides/graphics/validation-layer) to output Gradle project libs folder (`<output>/app/jniLibs/arm64-v8a`)
 * Monitor adb output log with Vulkan Validation layer logs
 * Note that game performance will be lower (esp. CPU) due to additional validation of the GPU commands
 
@@ -95,5 +98,3 @@ Use `.\adb.exe -d logcat Flax:I *:S` to listen for game logs on device.
 - Flax exposes Gamepad for Android device at index 0 which can be used to vibrate the device or read the Back key pressed by the user during gameplay
 - To enable device vibrations add `android.permission.VIBRATE` to the permissions list in Android Platform Settings asset
 - To enable device network state reading add `android.permission.ACCESS_NETWORK_STATE` to the permissions list in Android Platform Settings asset
-
-

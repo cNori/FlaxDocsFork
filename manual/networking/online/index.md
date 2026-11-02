@@ -9,6 +9,10 @@ Flax contains `IOnlinePlatform` interface designed for online platform providers
 * [Xbox Live](https://github.com/FlaxEngine/OnlinePlatformXboxLive)
 * Platform-specific (PlayStation, Switch) for registered developers
 
+## Online Platform Sample
+
+Sample project with Online Platform usage can be found [here](https://github.com/FlaxEngine/OnlinePlatformSample). Can be used as a reference in game projects for how to link into different online/store systems.
+
 ## Online Platform Setup
 
 In your game code setup the Online system with Online Platform (eg. when game opens the main menu). Depening on the runtime platform you can pick the online service to use (eg. Xbox Live on Xbox, Google Play on Android and Steam on Windows/Mac/Linux):
@@ -130,6 +134,6 @@ platform->SetSaveGame(TEXT("savegame_0"), Span<byte>(saveGame.Get(), saveGame.Co
 ```
 ***
 
-Note that Online API is sync and always returns `true` on failure. In some cases, such as player freiends list reading, it might take a bit to download this information from online service provider thus you might consider using it asynchroniusly (eg. from async task or a custom thread). To learn about multithreading see [this page](../../scripting/advanced/multithreading.md).
+Note that Online API is sync and always returns `true` on failure. In some cases, such as player friends list reading, it might take a bit to download this information from online service provider thus you might consider using it asynchroniusly (eg. from async task or a custom thread). To learn about multithreading see [this page](../../scripting/advanced/multithreading.md).
 
 Finally, many of the Online API methods contain the last argument as `User localUser` which is `null` by default. It can be used to redirect Online Platform for a specific local player which is usefull in case of local-multiplayer games. The default value `null` can be used to access the first player info.

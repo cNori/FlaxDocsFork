@@ -27,7 +27,7 @@ A model asset can contain an SDF texture baked for the meshes which can be creat
 
 ![Model Import SDF Generate Option](media/model-sdf-import-settings.png)
 
-When importing model assets you can check the **Generate SDF** option to automatically calculate an SDF texture for eveyr imported model file. In projects that use DDGI or Global SDF you can enable the **Generate SDF On Model Import** option in [Graphics Settings](../../editor/game-settings/graphics-settings.md) which will change the default model import value to always generate SDFs on model import.
+When importing model assets you can check the **Generate SDF** option to automatically calculate an SDF texture for every imported model file. In projects that use DDGI or Global SDF you can enable the **Generate SDF On Model Import** option in [Graphics Settings](../../editor/game-settings/graphics-settings.md) which will change the default model import value to always generate SDFs on model import.
 
 ![Model SDF option in Game Settings](media/model-sdf-option-setting.png)
 
@@ -46,6 +46,17 @@ Global SDF is used by [Realtime Global Illumination](../lighting/gi/realtime.md)
 You can preview the Global SDF in every Editor viewport (both scene and model editors) with **View -> Debug View -> Global SDF**.
 
 Every object (model, terrain, foliage) can control whether it's visible in Global SDF by using `DrawPass.GlobalSDF`.
+
+#### Global SDF Overdraw
+
+![Global SDF Overdraw Debug View Mode](media/global-sdf-perf-debug-mode.png)
+
+Use `Debug View -> Optimization -> Global SDF Overdraw` mode to inspect scene complexity. Areas with red color are made of more objects that affect Global SDF chunks rasterization performance. Final overdraw complexity is calculated based on:
+* amount of objects,
+* amount of rasterization dispatches (each for separate layer of models or terrain patches),
+* use of dynamic objects.
+
+Chunks without dynamic objects are rasterized only when needed, while chunks with dynamic objects perform frequent SDF updates that affect performance. Also, using more than `28` ovbjects per chunk enforces additional layered rasterization passes which use more bandwitch. Global SDF uses cascades and rejects too small objects from drawing into cascades based on cascade voxel size which greatly improve scalability.
 
 ### Global SDF in Content
 
@@ -76,7 +87,7 @@ Global SDF can be sampled in custom shaders by using a utility header with const
 
 ```hlsl
 // Include Global SDF utility
-#include "./Flax/GlobalSignDistanceField.hlsl"
+#include "./Flax/Utils/GlobalSignDistanceField.hlsl"
 
 META_CB_BEGIN(0, Data)
 //..constants..
@@ -168,3 +179,4 @@ void Render()
 * If a model is used on levels with very large or very small scales (eg. *1000* or *0.0001*) then apply this scale to the import transform or adjust the SDF resolution scale on the asset to have similar SDF quality.
 * Use Global SDF debug view to analyze the SDF scene (it should roughly match the actual scene geometry - that's what the GI algorithm sees).
 * Use `StaticFlags` for static objects so Global SDF can optimize rasterization of static scene.
+* Use `Global SDF Overdraw` debug view mode to inspect scene complexity. Areas with red color are made of more objects that affect Global SDF chunks rasterization performance.

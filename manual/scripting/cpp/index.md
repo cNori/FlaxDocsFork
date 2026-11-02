@@ -19,7 +19,7 @@ Visit **[C++ API Reference](../../../api-cpp/index.md)** to learn about scriptin
 
 ## Setup
 
-Flax Editor contains a build-in C# compiler for scripts but for C\+\+ scripting the platform-dependent toolset is required to be installed on the machine. Every platform uses its own native tools. To learn about them see this [page](../../platforms/index.md). Below you can learn quickly how to set it up depending on your platform.
+Flax Editor contains a built-in C# compiler for scripts but for C\+\+ scripting the platform-dependent toolset is required to be installed on the machine. Every platform uses its own native tools. To learn about them see this [page](../../platforms/index.md). Below you can learn quickly how to set it up depending on your platform.
 
 ### Windows
 
@@ -30,12 +30,13 @@ Flax Editor contains a build-in C# compiler for scripts but for C\+\+ scripting 
 ### Linux
 
 * Install [Visual Studio Code](https://code.visualstudio.com/)
-* Get the compiler `sudo apt-get install clang lldb lld` (Clang 6 or newer)
+* Get the compiler `sudo apt-get install clang lldb lld` (Clang 14 or newer)
 * Install required dependencies `libxcursor-dev libxinerama-dev libx11-dev`
 
 ### Mac
 
 * Install XCode or XCode Command Line Tools (and optionally [Visual Studio Code](https://code.visualstudio.com/))
+* Minimum XCode version is `16.4`.
 
 ## How to create C++ script?
 

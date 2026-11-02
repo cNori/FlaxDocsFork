@@ -15,12 +15,12 @@ jobs:
  
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
       - name: Checkout live docs repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: FlaxEngine/FlaxDocsHost
           path: _site
@@ -38,24 +38,27 @@ jobs:
           sudo apt-get install mono-complete --yes
 
       - name: Get .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 10.0.x
 
       - name: Print .NET info
         run: |
           dotnet --info
           dotnet workload --info
 
-      - name: Build docs
+      - name: Get Flax
         run: |
           git lfs version
           git clone https://github.com/FlaxEngine/FlaxEngine.git FlaxEngine
           cd FlaxEngine
           git reset --hard $(cat ../commit.txt)
           git lfs pull
-          ./Development/Scripts/Linux/CallBuildTool.sh -log -arch=x64 -configuration=Development -platform=Windows -buildtargets=FlaxEditor -build -BuildBindingsOnly
+          ./Development/Scripts/Linux/CallBuildTool.sh -log -arch=x64 -configuration=Development -platform=Windows -buildtargets=FlaxEditor -build -dotnet=10 -BuildBindingsOnly
           cd ..
+
+      - name: Build docs
+        run: |
           mono docfx/docfx.exe metadata
           mono code2yaml/code2yaml.exe code2yaml.json
           mono docfx/docfx.exe build
@@ -77,7 +80,7 @@ jobs:
           git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
 
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v1.1.0
         with:
           github_token: ${{ secrets.API_TOKEN_GITHUB }}
           branch: master

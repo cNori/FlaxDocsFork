@@ -91,12 +91,17 @@ Flax uses the same import settings data schemes for **models**, **skinned models
 | **Collision Meshes Prefix** | If specified, all meshes that starts with this prefix in the name will be imported as a separate collision data asset (excluded used for rendering). |
 | **Collision Type** | The type of collision that should be generated if the mesh has a collision prefix specified. |
 |||
+| **Data Format** ||
+| **Position Format** | The imported vertex positions data format to use by meshes. Changing this affects memory usage of the mesh data, performance and overall quality. Possible options: <table><tbody><tr><th>Option</th><th>Description</th></tr><tr><td>**Float32**</td><td>XYZ channels with 32-bit precision (12 bytes per vertex).</td></tr><tr><td>**Float16**</td><td>XYZ(W) channels with 16-bit precision (8 bytes per vertex).</td></tr><tr><td>**Automatic**</td><td>Selects the most memory-efficient format that can represent positions within a max error defined in project Build Settings.</td></tr></table></tbody>|
+| **Tex Coord Format** | The imported vertex texture coordinates data format to use by meshes. Changing this affects memory usage of the mesh data, performance and overall quality. Possible options: <table><tbody><tr><th>Option</th><th>Description</th></tr><tr><td>**Float16**</td><td>XY channels with 16-bit precision (4 bytes per vertex).</td></tr><tr><td>**UNorm8**</td><td>XY channels with 8-bit precision (2 bytes per vertex). Valid only for normalized UVs within range [0; 1], scaled or negative UVs won't work.</td></tr></table></tbody>|
+|||
 | **Transform** ||
 | **Scale** | Custom uniform scale applied to the imported model data. |
 | **Rotation** | Custom import geometry rotation applied to the imported model data. |
 | **Translation** | Custom import geometry offset applied to the imported model data. |
 | **Use Local Origin** | If checked, the imported geometry will be shifted to its local transform origin. |
 | **Center Geometry** | If checked, the imported geometry will be shifted to the center of mass. |
+| **Ignore Nodes Scale** | If checked, the importer will ignore nodes scale property. |
 |||
 | **Animation** ||
 | **Duration** | Specifies the imported animation duration mode. Can use the original value or be overriden by settings. Possible options: <table><tbody><tr><th>Option</th><th>Description</th></tr><tr><td>**Imported**</td><td>The imported duration.</td></tr><tr><td>**Custom**</td><td>The custom duration specified via keyframes range.</td></tr></table></tbody>|
@@ -113,6 +118,12 @@ Flax uses the same import settings data schemes for **models**, **skinned models
 | **Base LOD** | The index of the LOD from the source model data to use as a reference for following LODs generation. |
 | **LOD Count** | The amount of LODs to include in the model (all remaining ones starting from Base LOD will be generated). |
 | **Triangle Reduction** | The target amount of triangles for the generated LOD (based on the higher LOD). Normalized to range 0-1. For instance 0.4 cuts the triangle count to 40%. |
+| **Sloppy Optimization** | Whether to do a sloppy mesh optimization. This is faster but does not follow the topology of the original mesh. |
+| **LOD Target Error** | Target error is an approximate measure of the deviation from the original mesh using distance normalized to `[0,1]` range (e.g. `0.01` means that simplifier will try to maintain the error to be below `1%` of the mesh extents). *Only used if Sloppy is unchecked.* |
+| **LOD Target Error Absolute** | If checked, the target error will be treated as absolute rather than relative to the mesh extents. In that mode, error is defined in absolute units which can be universal across similar mesh types no matter their size. *Only used if Sloppy is unchecked.* |
+| **Lock Border** | If checked, vertices on topological borders (edges without a paired triangle) will not be moved during simplification. Useful for meshes that tile or share edges with other meshes. *Only used if Sloppy is unchecked.* |
+| **Preserve UVs** | If checked, UV channels will be included in the simplification error metric to preserve UV layout. Essential for trimsheets and atlased textures. *Only used if Sloppy is unchecked.* |
+| **Preserve UVs Weight** | The weight of UV attributes in the simplification error metric. Higher values preserve UVs more aggressively at the cost of geometric quality. *Only used if Sloppy is unchecked and Preserve UVs is checked.* |
 |||
 | **Import Materials** | If checked, the importer will create materials for model meshes as specified in the file. |
 | **Import Materials As Instances** | If checked, the importer will create the model's materials as instances of a base material. |

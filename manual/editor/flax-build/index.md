@@ -23,18 +23,19 @@ This documentation section covers most of the topics related to Flax.Build tool.
 ## In this section
 
 * [API tags](api-tags.md)
-* [Build Blugins](plugins.md)
+* [Build Plugins](plugins.md)
 * [Build Tool Guide](guide.md)
+* [Flax Project Format (.flaxproj)](flaxproj-format.md)
 
 ## Build Scripts
 
 The main source of build configuration are **.Build.cs** files located in the project `Source` directory. Written in **C#**, scripts can contain targets, modules, SDKs, or other utilities used for building. When generating project scripts files, all build scripts are included in **Rules** project which defines the build rules and can be explored with code IDE.
 
-Build scripts are using C# 12 with full .NET 8 support. Additionally Flax.Build assembly is referenced with many useful utilities to use during build setup like:
+Build scripts are using C# 14 with full .NET 10 support. Additionally Flax.Build assembly is referenced with many useful utilities to use during build setup like:
 * `CommandLine` attribute for command line parsing
 * `Log` utility with info/errors logging capabilities (to log file and to console output)
 * `Tokenizer` class for passing code as tokens
-* `Utilities` class with many usefull tools (eg. `WriteFileIfChanged`, `ReplaceInFiles`, `Run`, `GetFileSize`..)
+* `Utilities` class with many useful tools (eg. `WriteFileIfChanged`, `ReplaceInFiles`, `Run`, `GetFileSize`..)
 * `Sdk` searching and caching tools (used for ex. `PS4Sdk`, `GDK`, `VulkanSdk`)
 * `VCEnvironment` tool that can invoke *MSBuild* tool (works on Windows, Linux and Mac).
 
@@ -105,7 +106,7 @@ Additionally, all build scripts are included in **BuildScripts** C# project whic
 
 ## Platforms Support
 
-Flax.Build is a **multiplatform** utility that has been battle-tested on Windows and Linux to build engine and games to the different target platforms including Windows, PS4, PS5, Xbox One, Xbox Scarlett, Android, Switch, Linux, macOS, iOS. Each target platform implementation is stored in a separate directory under `Source\Tools\Flax.Build\Platforms` and contain **Platform** implementation and **Toolchain** implementation. Different platforms can use external SDKs, toolsets, or custom compilers to build code for a runtime.
+Flax.Build is a **multiplatform** utility that has been battle-tested on Windows and Linux to build engine and games to the different target platforms including Windows, PS4, PS5, Xbox One, Xbox Scarlett, Android, Switch, Linux, macOS, iOS, Web. Each target platform implementation is stored in a separate directory under `Source\Tools\Flax.Build\Platforms` and contain **Platform** implementation and **Toolchain** implementation. Different platforms can use external SDKs, toolsets, or custom compilers to build code for a runtime.
 
 Also, engine dependency packages contain automatic build scripts to prepare pre-build deps for development. When adding new platform support many deps packages have to be ported too. The related code can be found in `Source\Tools\Flax.Build\Deps\Dependencies` folder.
 

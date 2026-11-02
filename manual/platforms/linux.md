@@ -2,7 +2,7 @@
 
 ## Technical information
 
-Flax is compiled for Linux platform using **Clang** compiler and uses **X11** for UI. Binaries are tested on Ubuntu `23`.
+Flax is compiled for Linux platform using **Clang** compiler and uses **X11** for UI. Binaries are tested on Ubuntu `24`.
 
 If your device has multiple GPUs installed you can select one using the cmd line argument: `-nvidia`, `-intel`, or `-amd`. Flax uses **Vulkan** for rendering.
 
@@ -28,7 +28,6 @@ If your game build runs on Linux as a server build then you can pass `-mute -nul
 | **Screen Width** | The default game window width (in pixels). |
 | **Screen Height** | The default game window height (in pixels). |
 | **Resizable Window** | Enables resizing the game window by the user. |
-| **Run In Background** | Enables game running when application window loses focus. |
 | **Force Single Instance** | Limits maximum amount of concurrent game instances running to one, otherwise user may launch application more than once. |
 | **Override Icon** | Custom icon texture to use for the application (overrides the default one). |
 | **Support Vulkan** | Enables support for Vulkan. Disabling it reduces compiled shaders count. |

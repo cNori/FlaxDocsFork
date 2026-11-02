@@ -4,31 +4,31 @@
 
 All Flax projects have a unified structure. This strict organization helps with development and provides better standardization across all Flax games.
 
-The Flax Editor can load projects located in any location on your drive. It's only required to place a valid **.flaxproj** file that describes the project (name, metadata). The Flax Editor will generate all project folders if they are missing (Cache, Content, Logs and Source directories) as well as C# projects and solution files.
+The Flax Editor can load projects located in any location on your drive. It is only required to place a valid **.flaxproj** file that describes the project (name, metadata). The Flax Editor will generate all project folders if they are missing (Cache, Content, Logs and Source directories) as well as C# projects and solution files.
 
 ## Example .flaxproj
 
-```xml
+```json
 {
-	"Name": "My Project",
-	"Version": "1.0",
-	"Company": "",
-	"Copyright": "",
-	"GameTarget": "MyProjectTarget",
-	"EditorTarget": "MyProjectEditorTarget",
-	"References": [
-		{
-			"Name": "$(EnginePath)/Flax.flaxproj"
-		},
-		{
-			"Name": "$(ProjectPath)/Plugins/MyPlugin/MyPlugin.flaxproj"
-		}
-	],
-	"DefaultScene": "297f662e43c41143e406ae9ab85097f2"
+  "Name": "My Project",
+  "Version": "1.0",
+  "Company": "",
+  "Copyright": "",
+  "GameTarget": "MyProjectTarget",
+  "EditorTarget": "MyProjectEditorTarget",
+  "References": [
+    {
+      "Name": "$(EnginePath)/Flax.flaxproj"
+    },
+    {
+      "Name": "$(ProjectPath)/Plugins/MyPlugin/MyPlugin.flaxproj"
+    }
+  ],
+  "DefaultScene": "297f662e43c41143e406ae9ab85097f2"
 }
 ```
 
-To learn more about project file properties see the [reference](https://docs.flaxengine.com/api/FlaxEditor.ProjectInfo.html).
+To learn more about project file properties see this [documentation page](../editor/flax-build/flaxproj-format.md).
 
 ## Folders structure
 
@@ -47,5 +47,5 @@ To learn more about project file properties see the [reference](https://docs.fla
      * **&lt;GameModule&gt;.Build.cs** - game module build script
    * **GameTarget.Build.cs** - game target build configuration script
    * **GameEditorTarget.Build.cs** - editor target build configuration script
- * **&lt;project_name&gt;.sln** - project scripts solution file, open it with Visual Studio
+ * **&lt;project_name&gt;.slnx** - project scripts solution file, open it with Visual Studio
  * **&lt;project_name&gt;.flaxproj** - project description and metadata file (used by editor and launcher)

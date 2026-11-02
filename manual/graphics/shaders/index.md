@@ -1,6 +1,6 @@
 # Shaders
 
-Shaders are **GPU program** resources which can run on the GPU and are able to perform rendering calculation using textures, vertices and other resources. Follow this documentation to learn more about wrtting and using shaders in your projects.
+Shaders are **GPU program** resources which can run on the GPU and are able to perform rendering calculation using textures, vertices and other resources. Follow this documentation to learn more about writing and using shaders in your projects.
 
 ## Graphics rendering
 
@@ -9,6 +9,10 @@ Flax supports graphics programming via C++ and/or C# API that wraps the underlay
 GPU pipeline uses **slot-based binding model** which is explicit and has low-overhead characteristic. When performing drawing or compute work dispatching the GPU resources such as textures and buffers are binded using resource views to the explicit pipeline slots - SRV/UAV/CB. The binding slots are global to all shader stages (vertex, pixel, compute, etc.) so texture view assigned to Shader Resource View slot can be used in binded pipeline state vertex/pixel/compute shaders. The engine implements shaders reflections and optimizes the direct stages binding under the hood.
 
 To learn more about graphics programming in Flax see related [documentation here](graphics-api.md).
+
+### GPU Debug Layer
+
+Graphics backends (D3D11, D3D12, Vulkan, etc.) implement debugging and validation layers that can be enabled in `Development` or `Debug` builds to provide more information about rendering correctness. They can be enabled via  `-gpudebug` command line (expect performance overhead varying across devices and platforms).
 
 ## Shading language
 
@@ -22,7 +26,6 @@ As an extension to the HLSL language, Flax uses a small set of **attribute macro
 | **Attribute** | **Description** |
 |--------|--------|
 | `META_VS(isVisible, minFeatureLevel)` | Placed above Vertex Shader function annotates it. |
-| `META_VS_IN_ELEMENT(type, index, format, slot, offset, slotClass, stepRate, isVisible)` | Placed between Vertex Shader function annotation and definition marks the vertex shader input usage and defines the data properties. Can be used multiple for every possible vertex element. |
 | `META_HS(isVisible, minFeatureLevel)` | Placed above Hull Shader function annotates it. |
 | `META_HS_PATCH(inControlPoints)` | Placed between Hull Shader function annotation and definition defines the amount of control points used by the patch function. |
 | `META_DS(isVisible, minFeatureLevel)` | Placed above Domain Shader function annotates it. |
@@ -36,6 +39,8 @@ As an extension to the HLSL language, Flax uses a small set of **attribute macro
 | `META_PERMUTATION_4(param0, param1, param2, param3)` | Creates a permutation based on four macros. |
 | `META_CB_BEGIN(index, name)` | Marks the beginning of the constant buffer definition. |
 | `META_CB_END` | Marks the end of the constant buffer definition. |
+
+`minFeatureLevel` should be `AUTO` for automatic detection or specific Feature Level: `FEATURE_LEVEL_ES2`, `FEATURE_LEVEL_SM4`, `FEATURE_LEVEL_SM5`, `FEATURE_LEVEL_SM6`.
 
 #### Shader permutations
 
@@ -77,13 +82,13 @@ The problem is that we have to create a set of different **variations of this sh
 4) Without specular, with IES Profile.
 
 However we don’t want to write 4 shaders but single one and just permutate it.
-That’s why we use macros *META_PERMUTATION_2*. Then we can simply compile shader with different sets of macros (eg. *NO_SPECULAR=1*, *USE_IES_PROFILE=0*) and generate different shaders from the same source code. The key to success is that we use data-oriented design and define all possible shader permutation statically in a shader. Later at runtime we just select desire permutation by index and use it in rendering code. This approach is low-overhead and doesn't generate unnessesery permutations but only the ones delcared by the user.
+That’s why we use macros *META_PERMUTATION_2*. Then we can simply compile shader with different sets of macros (eg. *NO_SPECULAR=1*, *USE_IES_PROFILE=0*) and generate different shaders from the same source code. The key to success is that we use data-oriented design and define all possible shader permutation statically in a shader. Later at runtime we just select desire permutation by index and use it in rendering code. This approach is low-overhead and doesn't generate unnecessary permutations but only the ones declared by the user.
 
-Also, if your code needs to be used just for a single shader function use macro `_<function_name>` (eg. `_CS_Sort`). In that way also resources used just by this function (eg. buffer slot or texture slot) can be exlucded from other functions compilation.
+Also, if your code needs to be used just for a single shader function use macro `_<function_name>` (eg. `_CS_Sort`). In that way also resources used just by this function (eg. buffer slot or texture slot) can be excluded from other functions compilation.
 
 #### Including shader files
 
-Shader sources are stored in `.shader` files. Each file can contain one or more shader functions for the certain graphics rendering implementation. Hovewer when building complex graphics pipeline you might need to split some functionalities into several utility files. For this case, `.hlsl` files can be used as they can contain custom code to be included. Flax supports including files with a following pattern:
+Shader sources are stored in `.shader` files. Each file can contain one or more shader functions for the certain graphics rendering implementation. However when building complex graphics pipeline you might need to split some functionalities into several utility files. For this case, `.hlsl` files can be used as they can contain custom code to be included. Flax supports including files with a following pattern:
 
 ```hlsl
 #include "./<project_name>/<file_path>.hlsl"
@@ -105,4 +110,5 @@ To learn how to use shaders in your projects follow the documentation and tutori
 * [Custom Fullscreen Shader](custom-fullscreen-shader.md)
 * [Custom Geometry Drawing](custom-geometry-drawing.md)
 * [Custom Compute Shader](custom-compute-shader.md)
+* [Cel Shading](cel-shading.md)
 * [Graphics API](graphics-api.md)

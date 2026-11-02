@@ -15,3 +15,5 @@ You can access and edit this setting using [Time](https://docs.flaxengine.com/ap
 | **Draw FPS** | The target amount of the frames rendered per second (actual game FPS). |
 | **Time Scale** | The game time scale factor. Default is 1. |
 | **Max Update Delta Time** | The maximum allowed delta time (in seconds) for the game logic update step. |
+| **Unfocused Max FPS** | Limits maximum game framerate when application window loses focus. Use 0 to disable this feature. |
+| **Unfocused Pause** | Enables pausing game when application window loses focus. |

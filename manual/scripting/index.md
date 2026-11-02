@@ -22,7 +22,7 @@ To learn more about build tools and infrastructure see [Flax.Build](../editor/fl
 You can write scripts in **C#** and add them to scene objects. To learn more about it see the pages in this section. Most of the documentation related to scripting covers C# to implement various gameplay logic. If you need help with learning C# see [this page](http://www.letmegooglethat.com/?q=C%23+tutorial).
 
 Flax uses [.NET](https://dotnet.microsoft.com/en-us) to load, compile and execute C# scripts.
-Currently the newest **C# 12** version is fully supported. Flax Editor requires [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) to be installed on a system.
+Currently the newest **C# 14** version is fully supported. Flax Editor requires [.NET SDK 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) to be installed on a system.
 
 If you want to use custom .NET libraries use build scripts to reference them as [shown here](tutorials/use-third-party-library.md).
 
@@ -52,6 +52,7 @@ To start visual scripting see the related documentation [here](visual/index.md).
   * [Visual Studio](debugging/visual-studio.md)
   * [Visual Studio Code](debugging/visual-studio-code.md)
   * [Rider](debugging/rider.md)
+  * [CLion](debugging/clion.md)
 * [Scripts serialization](serialization/index.md)
 * [Empty Actor](empty-actor.md)
 * [Engine API](engine-api.md)
@@ -59,7 +60,10 @@ To start visual scripting see the related documentation [here](visual/index.md).
   * [Custom script editor](tutorials/custom-editor.md)
   * [Attributes](custom-editors/attributes.md)
 * [Preprocessor variables](preprocessor.md)
-* [Scripting restrictions](restrictions.md)
+* [C# Scripting](csharp/index.md)
+  * [Project file management](csharp/project-file-management.md)
+  * [Nuget Packages](csharp/nuget-packages.md)
+  * [Scripting Restrictions](csharp/restrictions.md)
 * [C++ Scripting](cpp/index.md)
   * [Common Types](cpp/common-types.md)
   * [Collections](cpp/collections.md)
@@ -91,6 +95,7 @@ To start visual scripting see the related documentation [here](visual/index.md).
   * [Tags](advanced/tags.md)
   * [Run code on module load](advanced/code-on-load.md)
   * [File Reference](advanced/file-reference.md)
+  * [Debug Commands](advanced/debug-commands.md)
 * [Artificial Intelligence](ai/index.md)
   * [Behavior Trees](ai/behavior-trees/index.md)
     * [Behavior Knowledge](ai/behavior-trees/knowledge.md)

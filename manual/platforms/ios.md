@@ -6,14 +6,14 @@
 
 Flax supports **iOS 14 or newer**. For graphics rendering Vulkan is used via MoltenVK to run on Metal.
 
-iOS doesn't allow dynamic code execution thus Flax uses [AOT](../scripting/restrictions.md) in order to precompile C# code into native.
+iOS doesn't allow dynamic code execution thus Flax uses [AOT](../scripting/csharp/restrictions.md) in order to precompile C# code into native.
 
 ## iOS Setup
 
 Follow these steps to setup your development PC for building game for iOS platform. In case of problems, please follow official documentation of iOS platform.
 
 * Setup [Apple Developer](https://developer.apple.com/) account (including certificates and provision profiles for a game)
-* Install **XCode**
+* Install **XCode** (min. ver `16.4`)
 * Install **.Net iOS Workload**
   * Run `dotnet workload install ios` via command line
   * More info: [https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-workload-install](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-workload-install)
